@@ -17,6 +17,13 @@ public class PlayerController : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
+    public VectorValue startingPosition;
+
+    private void Start()
+    {
+        transform.position = startingPosition.initialValue;
+    }
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
