@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum GameState { FreeRoam, Dialog }
+public enum GameState { FreeRoam, Dialog, Purchase }
 
 public class GameController : MonoBehaviour
 {
     [SerializeField] private PlayerController playerController;
+    [SerializeField] private ShopListUI shopUI;
 
     GameState state;
 
@@ -19,9 +20,22 @@ public class GameController : MonoBehaviour
 
         DialogManager.Instance.OnCloseDialog += () =>
         {
-            if(state == GameState.Dialog)
+            if (playerController.IsShop)
+            {
+                state = GameState.Purchase;
+            }
+
+            if (state == GameState.Dialog)
                 state = GameState.FreeRoam;
         };
+
+        if(shopUI != null)
+        {
+            shopUI.OnCloseShop += () =>
+            {
+                state = GameState.FreeRoam;
+            };
+        }
     }
 
     private void Update()
@@ -33,6 +47,10 @@ public class GameController : MonoBehaviour
         else if(state == GameState.Dialog)
         {
             DialogManager.Instance.HandleUpdate();
+        }
+        else if (state == GameState.Purchase)
+        {
+            shopUI.HandleUpdate();
         }
     }
 }

@@ -896,7 +896,7 @@ GameObject:
   - component: {fileID: 211824923}
   - component: {fileID: 211824922}
   m_Layer: 5
-  m_Name: Item Icon
+  m_Name: Outfit Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1187,7 +1187,7 @@ GameObject:
   - component: {fileID: 682816105}
   - component: {fileID: 682816104}
   m_Layer: 5
-  m_Name: Item Background
+  m_Name: Outfit Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1383,7 +1383,7 @@ GameObject:
   - component: {fileID: 1126948254}
   - component: {fileID: 1126948253}
   m_Layer: 5
-  m_Name: Item Price
+  m_Name: Outfit Price
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1450,6 +1450,77 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1126948251}
   m_CullTransparentMesh: 0
+--- !u!1 &1301082900
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1301082902}
+  - component: {fileID: 1301082901}
+  - component: {fileID: 1301082903}
+  m_Layer: 0
+  m_Name: ShopTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &1301082901
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1301082900}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!4 &1301082902
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1301082900}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.552, y: 0.613, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1301082903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1301082900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c0fee4618f85f84c9150c97fc47af98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shopUI: {fileID: 1359293871}
 --- !u!1 &1359293867
 GameObject:
   m_ObjectHideFlags: 0
@@ -1539,6 +1610,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 431782fe5ed255e40a7b57f68534f6d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  purchaseOutfit: {fileID: 2128131913}
 --- !u!1 &1378431879
 GameObject:
   m_ObjectHideFlags: 0
@@ -1628,7 +1700,7 @@ GameObject:
   - component: {fileID: 1476980747}
   - component: {fileID: 1476980746}
   m_Layer: 5
-  m_Name: Item Name
+  m_Name: Outfit Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1806,9 +1878,10 @@ GameObject:
   - component: {fileID: 1722958334}
   - component: {fileID: 1722958335}
   - component: {fileID: 1722958336}
-  m_Layer: 9
+  - component: {fileID: 1722958337}
+  m_Layer: 10
   m_Name: Shop Desk
-  m_TagString: Untagged
+  m_TagString: Shop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1869,6 +1942,19 @@ MonoBehaviour:
     lines:
     - Wow, didn't know you could walk through walls..
     - Hey, hey, hey!
+--- !u!114 &1722958337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1722958333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c0fee4618f85f84c9150c97fc47af98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shopUI: {fileID: 0}
 --- !u!1 &1780020597
 GameObject:
   m_ObjectHideFlags: 0
@@ -1931,6 +2017,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerController: {fileID: 1471973140}
+  shopUI: {fileID: 1359293871}
 --- !u!114 &1780020601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1964,6 +2051,9 @@ MonoBehaviour:
   interactablesLayer:
     serializedVersion: 2
     m_Bits: 512
+  sellerLayer:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!1 &1786326483
 GameObject:
   m_ObjectHideFlags: 0

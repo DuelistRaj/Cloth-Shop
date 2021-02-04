@@ -47,7 +47,7 @@ public class Character : MonoBehaviour
 
     private bool IsWalkable(Vector3 targetPos)
     {
-        if (Physics2D.OverlapCircle(targetPos, 0.2f, GameLayers.i.SolidLayer | GameLayers.i.InteractablesLayer) != null)
+        if (Physics2D.OverlapCircle(targetPos, 0.2f, GameLayers.i.SolidLayer | GameLayers.i.InteractablesLayer | GameLayers.i.SellerLayer) != null)
         {
             return false;
         }

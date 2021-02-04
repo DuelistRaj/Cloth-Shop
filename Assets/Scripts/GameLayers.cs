@@ -8,6 +8,8 @@ public class GameLayers : MonoBehaviour
     private LayerMask solidObjectsLayer;
     [SerializeField]
     private LayerMask interactablesLayer;
+    [SerializeField]
+    private LayerMask sellerLayer;
 
     public static GameLayers i { get; set; }
 
@@ -24,5 +26,10 @@ public class GameLayers : MonoBehaviour
     public LayerMask InteractablesLayer
     {
         get => interactablesLayer;
+    }
+
+    public LayerMask SellerLayer
+    {
+        get => sellerLayer;
     }
 }

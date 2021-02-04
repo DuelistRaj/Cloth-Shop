@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, ShopCustomer
 {
     private Vector2 input;
 
@@ -12,6 +12,13 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer spriteRenderer;
 
     public VectorValue startingPosition;
+
+    private bool isShop;
+
+    public bool IsShop
+    {
+        get => isShop;
+    }
 
     private void Awake()
     {
@@ -56,13 +63,24 @@ public class PlayerController : MonoBehaviour
 
     private void Interact()
     {
+        isShop = false;
         var facingDir = new Vector3(character.Animator.MoveX, character.Animator.MoveY);
         var interactPos = transform.position + facingDir;
 
-        var collider = Physics2D.OverlapCircle(interactPos, 0.3f, GameLayers.i.InteractablesLayer);
+        var collider = Physics2D.OverlapCircle(interactPos, 0.3f, GameLayers.i.InteractablesLayer | GameLayers.i.SellerLayer);
+
         if(collider != null)
         {
+            if (collider.CompareTag("Shop"))
+            {
+                isShop = true;
+            }
             collider.GetComponent<Interactable>()?.Interact();
         }
+    }
+
+    public void PurchasedOutfit(Outfit.OutfitType outfitType)
+    {
+        Debug.Log("Purchased Outfit: " + outfitType);
     }
 }
