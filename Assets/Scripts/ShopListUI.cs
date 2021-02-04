@@ -10,7 +10,10 @@ public class ShopListUI : MonoBehaviour
     private Transform outfitTemplate;
     private ShopCustomer shopCustomer;
 
-    public Button purchaseOutfit;
+    [SerializeField]
+    private Text dollar;
+
+    public VectorValue data;
 
     public event Action OnCloseShop;
 
@@ -18,6 +21,8 @@ public class ShopListUI : MonoBehaviour
     {
         container = transform.Find("Container");
         outfitTemplate = container.Find("Outfit Template");
+
+        container.Find("Reset").GetComponent<Button>().onClick.AddListener(Reset);
         outfitTemplate.gameObject.SetActive(false);
     }
 
@@ -42,7 +47,7 @@ public class ShopListUI : MonoBehaviour
         outfitoutfitRectTransform.anchoredPosition = new Vector2(outfitWidth * yindex, -outfitHeight * xindex);
 
         outfitTempTransform.Find("Outfit Name").GetComponent<Text>().text = outfitName;
-        outfitTempTransform.Find("Outfit Price").GetComponent<Text>().text = outfitPrice.ToString();
+        outfitTempTransform.Find("Outfit Price").GetComponent<Text>().text = "$" + outfitPrice.ToString();
 
         outfitTempTransform.Find("Outfit Icon").GetComponent<Image>().sprite = outfitSprite;
 
@@ -61,7 +66,15 @@ public class ShopListUI : MonoBehaviour
     private void TryPurchaseOutfit(Outfit.OutfitType outfitType)
     {
         if(shopCustomer.HasDollar(Outfit.GetPrice(outfitType)))
+        {
+            dollar.text = "$" + data.dollarAmount.ToString();
             shopCustomer.PurchasedOutfit(outfitType);
+        }  
+    }
+
+    private void Reset()
+    {
+        data.dollarAmount = 10000;
     }
 
     public void Show(ShopCustomer shopCustomer)
