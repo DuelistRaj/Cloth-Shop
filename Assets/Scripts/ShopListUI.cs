@@ -75,6 +75,7 @@ public class ShopListUI : MonoBehaviour
     private void Reset()
     {
         data.dollarAmount = 10000;
+        dollar.text = "$" + data.dollarAmount.ToString();
     }
 
     public void Show(ShopCustomer shopCustomer)
