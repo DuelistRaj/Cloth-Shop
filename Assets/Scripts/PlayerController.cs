@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerController : MonoBehaviour
 {
@@ -32,7 +33,7 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("moveY", startingPosition.spriteDirection);
     }
 
-    private void Update()
+    public void HandleUpdate()
     {
         if(!isMoving)
         {
