@@ -17128,13 +17128,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneTransition
       objectReference: {fileID: 0}
+    - target: {fileID: 2973482506234908578, guid: 911ccc96f59b87c4daa818e743117429, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2973482506234908579, guid: 911ccc96f59b87c4daa818e743117429, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2973482506234908588, guid: 911ccc96f59b87c4daa818e743117429, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.5
       objectReference: {fileID: 0}
     - target: {fileID: 2973482506234908588, guid: 911ccc96f59b87c4daa818e743117429, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.313
+      value: -7.2
       objectReference: {fileID: 0}
     - target: {fileID: 2973482506234908588, guid: 911ccc96f59b87c4daa818e743117429, type: 3}
       propertyPath: m_LocalPosition.z
@@ -17244,6 +17252,14 @@ PrefabInstance:
     - target: {fileID: 2992457258907513778, guid: a47fd944a20da264bb35d6621db18ac5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2992457258907513778, guid: a47fd944a20da264bb35d6621db18ac5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2992457258907513778, guid: a47fd944a20da264bb35d6621db18ac5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a47fd944a20da264bb35d6621db18ac5, type: 3}
