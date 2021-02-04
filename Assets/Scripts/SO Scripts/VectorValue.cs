@@ -7,4 +7,5 @@ public class VectorValue : ScriptableObject
 {
     public Vector2 initialValue;
     public float spriteDirection;
+    public int dollarAmount;
 }

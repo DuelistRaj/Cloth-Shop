@@ -60,7 +60,8 @@ public class ShopListUI : MonoBehaviour
 
     private void TryPurchaseOutfit(Outfit.OutfitType outfitType)
     {
-        shopCustomer.PurchasedOutfit(outfitType);
+        if(shopCustomer.HasDollar(Outfit.GetPrice(outfitType)))
+            shopCustomer.PurchasedOutfit(outfitType);
     }
 
     public void Show(ShopCustomer shopCustomer)

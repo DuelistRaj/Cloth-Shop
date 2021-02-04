@@ -83,4 +83,15 @@ public class PlayerController : MonoBehaviour, ShopCustomer
     {
         Debug.Log("Purchased Outfit: " + outfitType);
     }
+
+    public bool HasDollar(int spendDollar)
+    {
+        if (startingPosition.dollarAmount >= spendDollar)
+        {
+            startingPosition.dollarAmount -= spendDollar;
+            return true;
+        }
+        else
+            return false;
+    }
 }
