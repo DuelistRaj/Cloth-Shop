@@ -17,6 +17,8 @@ public class CharacterAnimator : MonoBehaviour
     public float MoveY { get; set; }
     public bool IsMoving { get; set; }
 
+    public VectorValue spriteData;
+
     private bool wasPreviouslyMoving;
 
     private SpriteAnimator walkDownAnim;
@@ -31,10 +33,18 @@ public class CharacterAnimator : MonoBehaviour
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        walkDownAnim = new SpriteAnimator(walkDownSprites, spriteRenderer);
-        walkUpAnim = new SpriteAnimator(walkUpSprites, spriteRenderer);
-        walkLeftAnim = new SpriteAnimator(walkLeftSprites, spriteRenderer);
-        walkRightAnim = new SpriteAnimator(walkRightSprites, spriteRenderer);
+
+        if (gameObject.CompareTag("Player"))
+        {
+            ChangePlayerOutfit();
+        }
+        else
+        {
+            walkDownAnim = new SpriteAnimator(walkDownSprites, spriteRenderer);
+            walkUpAnim = new SpriteAnimator(walkUpSprites, spriteRenderer);
+            walkLeftAnim = new SpriteAnimator(walkLeftSprites, spriteRenderer);
+            walkRightAnim = new SpriteAnimator(walkRightSprites, spriteRenderer);
+        }
 
         currentAnim = walkDownAnim;
     }
@@ -62,5 +72,25 @@ public class CharacterAnimator : MonoBehaviour
 
         wasPreviouslyMoving = IsMoving;
 
+    }
+
+    public void ChangePlayerOutfit()
+    {
+        foreach (var sprite in spriteData.walkDownSprites)
+            spriteRenderer.sprite = sprite;
+
+        foreach (var sprite in spriteData.walkUpSprites)
+            spriteRenderer.sprite = sprite;
+
+        foreach (var sprite in spriteData.walkLeftSprites)
+            spriteRenderer.sprite = sprite;
+
+        foreach (var sprite in spriteData.walkRightSprites)
+            spriteRenderer.sprite = sprite;
+
+        walkDownAnim = new SpriteAnimator(spriteData.walkDownSprites, spriteRenderer);
+        walkUpAnim = new SpriteAnimator(spriteData.walkUpSprites, spriteRenderer);
+        walkLeftAnim = new SpriteAnimator(spriteData.walkLeftSprites, spriteRenderer);
+        walkRightAnim = new SpriteAnimator(spriteData.walkRightSprites, spriteRenderer);
     }
 }

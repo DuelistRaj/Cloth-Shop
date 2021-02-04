@@ -81,7 +81,29 @@ public class PlayerController : MonoBehaviour, ShopCustomer
 
     public void PurchasedOutfit(Outfit.OutfitType outfitType)
     {
-        Debug.Log("Purchased Outfit: " + outfitType);
+        if(outfitType == Outfit.OutfitType.Original)
+        {
+            startingPosition.walkDownSprites = Outfit.ChangeSpritesDown(Outfit.OutfitType.Original);
+            startingPosition.walkUpSprites = Outfit.ChangeSpritesUp(Outfit.OutfitType.Original);
+            startingPosition.walkLeftSprites = Outfit.ChangeSpritesLeft(Outfit.OutfitType.Original);
+            startingPosition.walkRightSprites = Outfit.ChangeSpritesRight(Outfit.OutfitType.Original);
+        }
+            
+        if (outfitType == Outfit.OutfitType.May)
+        {
+            startingPosition.walkDownSprites = Outfit.ChangeSpritesDown(Outfit.OutfitType.May);
+            startingPosition.walkUpSprites = Outfit.ChangeSpritesUp(Outfit.OutfitType.May);
+            startingPosition.walkLeftSprites = Outfit.ChangeSpritesLeft(Outfit.OutfitType.May);
+            startingPosition.walkRightSprites = Outfit.ChangeSpritesLeft(Outfit.OutfitType.May);
+        }
+            
+        if (outfitType == Outfit.OutfitType.Wally)
+        {
+            startingPosition.walkDownSprites = Outfit.ChangeSpritesDown(Outfit.OutfitType.Wally);
+            startingPosition.walkUpSprites = Outfit.ChangeSpritesUp(Outfit.OutfitType.Wally);
+            startingPosition.walkLeftSprites = Outfit.ChangeSpritesLeft(Outfit.OutfitType.Wally);
+            startingPosition.walkRightSprites = Outfit.ChangeSpritesLeft(Outfit.OutfitType.Wally);
+        } 
     }
 
     public bool HasDollar(int spendDollar)

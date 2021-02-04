@@ -7,6 +7,7 @@ public enum GameState { FreeRoam, Dialog, Purchase }
 public class GameController : MonoBehaviour
 {
     [SerializeField] private PlayerController playerController;
+    [SerializeField] private CharacterAnimator characterAnimator;
     [SerializeField] private ShopListUI shopUI;
 
     GameState state;
@@ -33,6 +34,7 @@ public class GameController : MonoBehaviour
         {
             shopUI.OnCloseShop += () =>
             {
+                characterAnimator.ChangePlayerOutfit();
                 state = GameState.FreeRoam;
             };
         }

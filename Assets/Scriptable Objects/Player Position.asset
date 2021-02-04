@@ -14,4 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialValue: {x: -1.5, y: -3.3}
   spriteDirection: 0
-  dollarAmount: 0
+  dollarAmount: 10000
+  walkDownSprites:
+  - {fileID: -3557192350262558446, guid: 487d0e4f371315d419b15c342b873440, type: 3}
+  - {fileID: -5913233417237022025, guid: 487d0e4f371315d419b15c342b873440, type: 3}
+  - {fileID: 6096292137091327616, guid: 487d0e4f371315d419b15c342b873440, type: 3}
+  walkUpSprites:
+  - {fileID: -5742730747773410515, guid: 487d0e4f371315d419b15c342b873440, type: 3}
+  - {fileID: -5360616773531553898, guid: 487d0e4f371315d419b15c342b873440, type: 3}
+  - {fileID: -915273878255050116, guid: 487d0e4f371315d419b15c342b873440, type: 3}
+  walkLeftSprites:
+  - {fileID: -4723748596254537546, guid: 487d0e4f371315d419b15c342b873440, type: 3}
+  - {fileID: -4039725132723536012, guid: 487d0e4f371315d419b15c342b873440, type: 3}
+  - {fileID: 5004161617367494440, guid: 487d0e4f371315d419b15c342b873440, type: 3}
+  walkRightSprites:
+  - {fileID: -4723748596254537546, guid: 487d0e4f371315d419b15c342b873440, type: 3}
+  - {fileID: -4039725132723536012, guid: 487d0e4f371315d419b15c342b873440, type: 3}
+  - {fileID: 5004161617367494440, guid: 487d0e4f371315d419b15c342b873440, type: 3}
