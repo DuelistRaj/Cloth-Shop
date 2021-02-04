@@ -8464,6 +8464,7 @@ GameObject:
   - component: {fileID: 1119822155}
   - component: {fileID: 1119822157}
   - component: {fileID: 1119822156}
+  - component: {fileID: 1119822158}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -8513,6 +8514,24 @@ MonoBehaviour:
   dialogBox: {fileID: 862457832}
   dialogText: {fileID: 2045477226}
   lettersPerSecond: 40
+--- !u!114 &1119822158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1119822154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7656484a7a0894d4cb4e848e597da980, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  solidObjectsLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  interactablesLayer:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!114 &1317736841 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2992457258907513779, guid: a47fd944a20da264bb35d6621db18ac5, type: 3}

@@ -5,17 +5,9 @@ using System;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField]
-    private float moveSpeed = 4;
-
-    public LayerMask solidObjectsLayer;
-    public LayerMask interactablesLayer;
-
-    private bool isMoving;
-
     private Vector2 input;
 
-    private CharacterAnimator animator;
+    private Character character;
 
     private SpriteRenderer spriteRenderer;
 
@@ -23,19 +15,19 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        animator = GetComponent<CharacterAnimator>();
+        character = GetComponent<Character>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Start()
     {
         transform.position = startingPosition.initialValue;
-        animator.MoveY = startingPosition.spriteDirection;
+        character.Animator.MoveY = startingPosition.spriteDirection;
     }
 
     public void HandleUpdate()
     {
-        if(!isMoving)
+        if(!character.IsMoving)
         {
             input.x = Input.GetAxisRaw("Horizontal");
             input.y = Input.GetAxisRaw("Vertical");
@@ -47,59 +39,27 @@ public class PlayerController : MonoBehaviour
             {
                 spriteRenderer.flipX = false;
 
-                animator.MoveX = input.x;
-                animator.MoveY = input.y;
-
                 if (input.x > 0)
                     spriteRenderer.flipX = true;
 
-                var targetPos = transform.position;
-                targetPos.x += input.x;
-                targetPos.y += input.y;
-
-                if(IsWalkable(targetPos))
-                    StartCoroutine(Move(targetPos));
+                StartCoroutine(character.Move(input));
 
                 startingPosition.spriteDirection = input.y;
             }
         }
 
-        animator.IsMoving = isMoving;
+        character.HandleUpdate();
 
         if (Input.GetKeyDown(KeyCode.X))
             Interact();
     }
 
-    IEnumerator Move(Vector3 targetPos)
-    {
-        isMoving = true;
-
-        while((targetPos - transform.position).sqrMagnitude >= Mathf.Epsilon)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
-            yield return null;
-        }
-        transform.position = targetPos;
-
-        isMoving = false;
-    }
-
-    private bool IsWalkable(Vector3 targetPos)
-    {
-        if(Physics2D.OverlapCircle(targetPos, 0.2f, solidObjectsLayer | interactablesLayer) != null)
-        {
-            return false;
-        }
-
-        return true;
-    }
-
     private void Interact()
     {
-        var facingDir = new Vector3(animator.MoveX, animator.MoveY);
+        var facingDir = new Vector3(character.Animator.MoveX, character.Animator.MoveY);
         var interactPos = transform.position + facingDir;
 
-        var collider = Physics2D.OverlapCircle(interactPos, 0.3f, interactablesLayer);
+        var collider = Physics2D.OverlapCircle(interactPos, 0.3f, GameLayers.i.InteractablesLayer);
         if(collider != null)
         {
             collider.GetComponent<Interactable>()?.Interact();
