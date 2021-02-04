@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 2992457258907513778}
   - component: {fileID: 2992457258907513777}
   - component: {fileID: 2992457258907513779}
-  - component: {fileID: 2992457258907513780}
   - component: {fileID: 2992457258907513781}
   - component: {fileID: 2992457258907513782}
+  - component: {fileID: 2108837528}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -102,26 +102,10 @@ MonoBehaviour:
   solidObjectsLayer:
     serializedVersion: 2
     m_Bits: 256
+  interactablesLayer:
+    serializedVersion: 2
+    m_Bits: 512
   startingPosition: {fileID: 11400000, guid: c06605eabc132a34db8a8bc0a1946c1d, type: 2}
---- !u!95 &2992457258907513780
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2992457258907513776}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6b8d20e611a315a4482d7dd2dd39cdf8, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!61 &2992457258907513781
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -169,3 +153,31 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &2108837528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2992457258907513776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0799e8f2b400d34bbd47af8ce9d3d0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkDownSprites:
+  - {fileID: -2311659948842064771, guid: 7e937fc94f636a24dbd42ace87566e6a, type: 3}
+  - {fileID: -1182821291677670348, guid: 7e937fc94f636a24dbd42ace87566e6a, type: 3}
+  - {fileID: -7446026091647042388, guid: 7e937fc94f636a24dbd42ace87566e6a, type: 3}
+  walkUpSprites:
+  - {fileID: 7364682651488144517, guid: 7e937fc94f636a24dbd42ace87566e6a, type: 3}
+  - {fileID: -4709456396536258026, guid: 7e937fc94f636a24dbd42ace87566e6a, type: 3}
+  - {fileID: 5938012242645255967, guid: 7e937fc94f636a24dbd42ace87566e6a, type: 3}
+  walkLeftSprites:
+  - {fileID: -6287787046888575383, guid: 7e937fc94f636a24dbd42ace87566e6a, type: 3}
+  - {fileID: -4529042392078601758, guid: 7e937fc94f636a24dbd42ace87566e6a, type: 3}
+  - {fileID: -4245738604243887485, guid: 7e937fc94f636a24dbd42ace87566e6a, type: 3}
+  walkRightSprites:
+  - {fileID: -6287787046888575383, guid: 7e937fc94f636a24dbd42ace87566e6a, type: 3}
+  - {fileID: -4529042392078601758, guid: 7e937fc94f636a24dbd42ace87566e6a, type: 3}
+  - {fileID: -4245738604243887485, guid: 7e937fc94f636a24dbd42ace87566e6a, type: 3}

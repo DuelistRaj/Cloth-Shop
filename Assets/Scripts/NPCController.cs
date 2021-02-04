@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShopKeeperController : MonoBehaviour, Interactable
+public class NPCController : MonoBehaviour, Interactable
 {
     [SerializeField] private Dialog dialog;
 
