@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     private float moveSpeed = 4;
 
     public LayerMask solidObjectsLayer;
+    public LayerMask interactablesLayer;
 
     private bool isMoving;
 
@@ -19,15 +20,16 @@ public class PlayerController : MonoBehaviour
 
     public VectorValue startingPosition;
 
-    private void Start()
-    {
-        transform.position = startingPosition.initialValue;
-    }
-
     private void Awake()
     {
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    private void Start()
+    {
+        transform.position = startingPosition.initialValue;
+        animator.SetFloat("moveY", startingPosition.spriteDirection);
     }
 
     private void Update()
@@ -47,7 +49,7 @@ public class PlayerController : MonoBehaviour
                 animator.SetFloat("moveX", input.x);
                 animator.SetFloat("moveY", input.y);
 
-                if (input.x >= 0)
+                if (input.x > 0)
                     spriteRenderer.flipX = true;
 
                 var targetPos = transform.position;
@@ -56,10 +58,15 @@ public class PlayerController : MonoBehaviour
 
                 if(IsWalkable(targetPos))
                     StartCoroutine(Move(targetPos));
+
+                startingPosition.spriteDirection = input.y;
             }
         }
 
         animator.SetBool("isMoving", isMoving);
+
+        if (Input.GetKeyDown(KeyCode.X))
+            Interact();
     }
 
     IEnumerator Move(Vector3 targetPos)
@@ -78,11 +85,23 @@ public class PlayerController : MonoBehaviour
 
     private bool IsWalkable(Vector3 targetPos)
     {
-        if(Physics2D.OverlapCircle(targetPos, 0.2f, solidObjectsLayer))
+        if(Physics2D.OverlapCircle(targetPos, 0.2f, solidObjectsLayer | interactablesLayer) != null)
         {
             return false;
         }
 
         return true;
+    }
+
+    private void Interact()
+    {
+        var facingDir = new Vector3(animator.GetFloat("moveX"), animator.GetFloat("moveY"));
+        var interactPos = transform.position + facingDir;
+
+        var collider = Physics2D.OverlapCircle(interactPos, 0.3f, interactablesLayer);
+        if(collider != null)
+        {
+            collider.GetComponent<Interactable>()?.Interact();
+        }
     }
 }
